@@ -10,11 +10,9 @@ services:
       - ./project:/home/node/app
     depends_on:
       - db
-
   db:
     image: postgres:latest
     environment:
-      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123456
       POSTGRES_DB: app
     ports:
@@ -23,5 +21,3 @@ services:
       - ./.docker/pgdata:/var/lib/postgresql/data
       - ./create.sql:/docker-entrypoint-initdb.d
     command: ['postgres', '-c', 'log_statement=all', '-c', 'log_destination=stderr']
-
- 
